@@ -1,3 +1,5 @@
+
+
 # 🚢 Titanic Survival Analysis Dashboard
 
 An end-to-end data analysis project on the Titanic dataset — from raw data cleaning to an interactive Streamlit dashboard for exploring survival patterns.
@@ -20,6 +22,12 @@ This project walks through the full data analysis pipeline:
 ├── cleaned_titanic.csv     # Output of the cleaning step (generated)
 └── README.md
 ```
+
+## ⚠️ Known Data Issue
+
+The source file used in this project (`File 3.csv`, 418 rows) is the Kaggle Titanic **`test.csv`** file, which does not include real survival outcomes. The `Survived` column present in this dataset matches Kaggle's `gender_submission.csv` **baseline** — a simple placeholder rule that marks *all females as survived and all males as not survived*. This is why the sex-based breakdown below shows an exact 100% / 0% split.
+
+As a result, every insight and KPI in this report that depends on `Survived` (overall survival rate, class breakdown, family status breakdown, etc.) reflects that placeholder rule rather than actual outcomes. To get real survival insights, this pipeline should be re-run on Kaggle's `train.csv` (891 rows with genuine outcomes) instead.
 
 ## Data Cleaning (`cleaned_data.ipynb`)
 
@@ -47,7 +55,7 @@ Overall KPIs computed on the cleaned dataset (418 passengers):
 
 Survival rate breakdowns:
 
-- **By Sex:** Female 100% vs. Male 0% *(note: reflects the sample used — worth double-checking against the full dataset)*
+- **By Sex:** Female 100% vs. Male 0% *(⚠️ this is the Kaggle baseline placeholder, not a real outcome — see "Known Data Issue" above)*
 - **By Passenger Class:** 1st = 46.73%, 2nd = 32.26%, 3rd = 33.03%
 - **By Travel Status:** Traveling with family = 50.91% vs. Traveling alone = 26.88%
 
